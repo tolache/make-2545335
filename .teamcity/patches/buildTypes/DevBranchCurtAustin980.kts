@@ -10,5 +10,5 @@ accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("DevBranchCurtAustin980")) {
     expectDisabledSettings("RQ_584")
-    updateDisabledSettings("RQ_1373", "RQ_1375", "RQ_584")
+    updateDisabledSettings("RQ_1373", "RQ_1374", "RQ_1375", "RQ_584")
 }
