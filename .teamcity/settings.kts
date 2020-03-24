@@ -266,11 +266,6 @@ object DockerMainParameters : Template({
         executionTimeoutMin = 180
     }
 
-    dependencies {
-        snapshot(DevBranchCurtSnapshot) {
-        }
-    }
-
     requirements {
         equals("BUILDTYPE", "official", "RQ_1373")
         equals("DOCKER_AGENT", "true", "RQ_1374")
