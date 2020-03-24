@@ -53,7 +53,7 @@ object DevBranchBandera980 : BuildType({
         param("env.MYTESTVAL", "something else more")
         param("env.platform", "bandera")
         param("env.PATH", "/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin")
-        param("env.MAKE_ENV_PARAMS", "ENABLE_GCC8=y PN=app BUILD_VERSION=%BuildCounter%")
+        param("env.MAKE_ENV_PARAMS", "ENABLE_GCC8=y PN=app BUILD_VERSION=%build.counter%")
         param("env.PRODUCT_PLATFORM", "Bandera_TCL_TCL")
         param("env.MAKE_EXTRA_TGTS", "dist-package")
         param("platform", "bandera")
@@ -207,7 +207,6 @@ object DockerMainParameters : Template({
             --network host
         """.trimIndent())
         param("saved_cmd", "%env.MAKE_ENV_PARAMS% make -j`nproc` BUILD_PLATFORM=%platform% %env.MAKE_EXTRA_VARIABLES% rootfs port-image %env.MAKE_EXTRA_TGTS% publish")
-        param("BuildCounter", "${DevBranchCurtSnapshot.depParamRefs.buildNumber}")
         param("env.MINOR", "80")
         param("env.PATH", "/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin")
         param("env.MAKE_ENV_PARAMS", """""""")
@@ -277,11 +276,9 @@ object FwBvatWithoutPluginList : Template({
     name = "FW BVAT without PluginList"
 
     allowExternalStatus = true
-    buildNumberPattern = "%BuildCounter%"
     maxRunningBuilds = 4
 
     params {
-        param("BuildCounter", "{0}")
         param("BVAT_URL", "http://ra-jenkins.corp.roku:8080/job/bvat_master_publisher/buildWithParameters")
         param("env.BVAT_URL", "true")
         param("env.IS_TEAMCITY_BUILD", "true")
