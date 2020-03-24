@@ -9,6 +9,12 @@ To apply the patch, change the buildType with id = 'DevBranchCurtAustin980'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("DevBranchCurtAustin980")) {
+    params {
+        add {
+            param("DOCKER_IMAGE", "tolache/ubuntu-make")
+        }
+    }
+
     expectDisabledSettings("RQ_584")
     updateDisabledSettings("RQ_1373", "RQ_1374", "RQ_1375", "RQ_584")
 }
