@@ -9,6 +9,11 @@ To apply the patch, change the buildType with id = 'DevBranchCurtAustin980'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("DevBranchCurtAustin980")) {
+    check(paused == false) {
+        "Unexpected paused: '$paused'"
+    }
+    paused = true
+
     params {
         add {
             param("DOCKER_IMAGE", "tolache/ubuntu-make")
